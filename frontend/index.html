@@ -1,14 +1,13 @@
-<div id="properties"></div>
-
-<script>
-fetch('http://localhost:4000/api/properties')
-  .then(res => res.json())
-  .then(properties => {
-    const container = document.getElementById('properties');
-    properties.forEach(p => {
-      const card = document.createElement('div');
-      card.innerHTML = `<h3>${p.title}</h3><p>${p.address}</p><p>$${p.price}</p>`;
-      container.appendChild(card);
-    });
-  });
-</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

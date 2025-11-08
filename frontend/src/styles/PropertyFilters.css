@@ -1,0 +1,28 @@
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .filters input,
+  .filters button {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .filters button {
+    background-color: #0066cc;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .filters button:hover {
+    background-color: #004d99;
+  }

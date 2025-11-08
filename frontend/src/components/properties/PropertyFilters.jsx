@@ -1,4 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { get } from "../..lib/api"; 
+import "./PropertyFilters.css";
 
 export default function PropertyFilters({ onChange }) {
   const [q, setQ] = useState("");
@@ -6,8 +8,6 @@ export default function PropertyFilters({ onChange }) {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
-
-  // Whenever a field changes, this runs and notifies parent
   const handleChange = (setter, field) => (e) => {
     const value = e.target.value;
     setter(value);
@@ -21,6 +21,8 @@ export default function PropertyFilters({ onChange }) {
 
   return (
     <form className="filters" onSubmit={(e) => e.preventDefault()}>
+      <h3>Filter Properties</h3>
+      
       <input
         name="q"
         placeholder="City, neighborhood, or keyword"

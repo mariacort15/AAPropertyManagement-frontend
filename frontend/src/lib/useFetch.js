@@ -7,10 +7,17 @@ export default function useFetch(endpoint) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    api.get(endpoint)
-      .then(res => setData(res.data))
-      .catch(err => setError(err))
-      .finally(() => setLoading(false));
+    async function fetchData() {
+      try {
+        const response = await api.get(endpoint);
+        setData(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
   }, [endpoint]);
 
   return { data, loading, error };

@@ -1,8 +1,14 @@
 import HeroBanner from "../components/layout/HeroBanner";
 import React from 'react';
-import PropertyList from '../components/properties/PropertyList';
+import PropertyList from '../components/PropertyList';
+import useFetch from "../lib/useFetch";
 
 export default function Home() {
+  const { data: properties, error, loading } = useFetch("properties/");
+
+  if (loading) return <p>Loading properties...</p>;
+  if (error) return <p>Error loading properties.</p>;
+
   return (
     <section className="text-center">
       <h1>Welcome to AA Property Management</h1>

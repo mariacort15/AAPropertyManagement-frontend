@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ContactForm.css";
 import { api } from "../../lib/api";
+import { post } from "../../lib/api";
 
 export default function ContactForm() {
   const [form, setForm] = useState({

@@ -12,7 +12,6 @@ export default function useQuery(key, fn, deps=[]) {
        .catch(e=> alive && setError(e))
        .finally(()=> alive && setLoading(false));
     return ()=>{ alive=false; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   return { data, loading, error };

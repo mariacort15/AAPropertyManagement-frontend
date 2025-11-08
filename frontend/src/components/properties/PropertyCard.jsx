@@ -5,12 +5,13 @@ export default function PropertyCard({ property }) {
     <div className="card shadow-sm" style={{ width: "18rem" }}>
       {property.image && (
         <img
-          src={property.image}
-          alt={property.title}
+          src="/images/default-property.jpg"
+          alt="No property image available"
           className="card-img-top"
-          style={{ height: "180px", objectFit: "cover" }}
+          style={{ height: "180px", width: "100%", objectFit: "cover" }}
         />
       )}
+      <p>Status: <strong>{property.status || "Available"}</strong></p>
       <div className="card-body">
         <h5 className="card-title">{property.title}</h5>
         <p className="card-text">

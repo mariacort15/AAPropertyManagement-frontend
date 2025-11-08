@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { post } from "../../lib/api";
 import "./Apply.css";
 
 export default function Apply() {
@@ -21,7 +21,7 @@ export default function Apply() {
     setStatus("Sending...");
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/contact/`, formData);
+      await post(`${process.env.REACT_APP_API_URL}/contact/`, formData);
       setStatus("Your application has been submitted!");
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {

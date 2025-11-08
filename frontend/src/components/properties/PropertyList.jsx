@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropertyFilters from "./PropertyFilters";
 import PropertyList from './components/propertyList';
-import React from 'react';
 import './PropertiesList.css';
 import PropertyCard from "./PropertyCard";
+import { get } from "../..lib/api";
+
 
 export default function PropertyList({ Properties }) {
-  if (!properties.length) return <p>No properties found.</p>;
+  if (!properties || properties.length === 0) { 
+    return <p>No properties available.</p>;
+  } 
 
   return (
     <div className="d-flex flex-wrap gap-4">
@@ -21,7 +24,6 @@ export default function PropertyList({ Properties }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch properties from your Django backend
     fetch("http://127.0.0.1:8000/api/properties/")
       .then((res) => res.json())
       .then((data) => {

@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { api } from './api';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function useFetch(endpoint) {
   const [data, setData] = useState([]);
@@ -7,17 +6,11 @@ export default function useFetch(endpoint) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await api.get(endpoint);
-        setData(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
+    fetch(`${BASE_URL}${endpoint}`)
+      .then((res) => res.json())
+      .then(setData)
+      .catch(setError)
+      .finally(() => setLoading(false));
   }, [endpoint]);
 
   return { data, loading, error };

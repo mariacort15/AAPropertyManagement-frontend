@@ -17,6 +17,7 @@ import { AuthContext } from './context/AuthContext';
 import LogoutButton from './components/LogoutButton';
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import Apply from "./pages/Apply";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -63,6 +64,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/apply" element={<Apply />} />
         </Routes>
       </main>
 

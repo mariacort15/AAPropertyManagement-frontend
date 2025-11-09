@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import useFetch from '../lib/useFetch';
 import PropertyCard from '../components/properties/PropertyCard';
+import { apiRequest } from '../lib/apiClient';
 
 export default function Properties() {
   const { data: properties, loading, error } = useFetch('properties/');
@@ -16,7 +17,7 @@ export default function Properties() {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  // Filter logic
+  
   const filteredProperties = useMemo(() => {
     return properties.filter((p) => {
       const matchesCity = filters.city ? p.city.toLowerCase().includes(filters.city.toLowerCase()) : true;

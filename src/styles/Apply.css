@@ -2,7 +2,7 @@
     max-width: 600px;
     margin: 4rem auto;
     padding: 2rem;
-    background: #fff;
+    background: #ce4545;
     border-radius: 8px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     text-align: center;
@@ -14,7 +14,7 @@
   }
   
   .apply-container p {
-    color: #555;
+    color: #9d1078;
     margin-bottom: 2rem;
   }
   
@@ -22,7 +22,7 @@
     display: block;
     text-align: left;
     margin-bottom: 1rem;
-    color: #333;
+    color: #0281ea;
   }
   
   .apply-form input,
@@ -30,13 +30,13 @@
     width: 100%;
     padding: 0.8rem;
     margin-top: 0.3rem;
-    border: 1px solid #ccc;
+    border: 1px solid #d15858;
     border-radius: 4px;
   }
   
   .submit-btn {
     background-color: #dc3545;
-    color: white;
+    color: rgb(66, 98, 37);
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 4px;

@@ -1,6 +1,12 @@
 .property-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.property-grid p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #b850ec;
+}

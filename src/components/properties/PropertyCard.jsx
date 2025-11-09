@@ -1,26 +1,22 @@
 import { Link } from 'react-router-dom';
+import React from "react";
+import "./PropertyCard.css";
 
 export default function PropertyCard({ property }) {
   return (
-    <div className="card shadow-sm" style={{ width: '18rem' }}>
-      {property.image && (
-        <img
-          src="/images/default-property.jpg"
-          alt="No property image available"
-          className="card-img-top"
-          style={{ height: '180px', width: '100%', objectFit: 'cover' }}
-        />
-      )}
-      <p>Status: <strong>{property.status || 'Available'}</strong></p>
-      <div className="card-body">
-        <h5 className="card-title">{property.title}</h5>
-        <p className="card-text">
-          {property.address}<br />
-          <strong>${property.rent}</strong> / month
-        </p>
-        <Link to={`/properties/${property.id}`} className="btn btn-primary btn-sm">
-          View Details
-        </Link>
+    <div className="property-card">
+      <img
+        src={property.image || "/placeholder.jpg"}
+        alt={property.name}
+        className="property-image"
+      />
+      <div className="property-details">
+        <h3>{property.name}</h3>
+        <p>{property.address}</p>
+        <p>{property.city}, {property.state}</p>
+        <p><strong>Status:</strong> {property.status}</p>
+        <p><strong>Type:</strong> {property.type}</p>
+        <p><strong>Price:</strong> ${property.price || "N/A"}</p>
       </div>
     </div>
   );

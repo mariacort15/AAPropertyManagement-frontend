@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_BASE; // "/api" with proxy, or "http://127.0.0.1:8000/api"
+const API_BASE_URL= import.meta.env.VITE_API__BASE_URL;
 
-const API_URL= import.meta.env.VITE_API_URL;
-
-export const getProperties = async () => {
-  const res = await fetch(`${API_URL}properties/`);
+export async function fetchProperties() {
+  const response = await fetch(`${API_BASE_URL}properties/`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch properties");
+  }
+  return await response.json();
 };
 
 export const api = axios.create({
@@ -85,7 +87,6 @@ api.interceptors.response.use(
   }
 );
 
-// convenience helpers returning response.data
 export const get  = (url, config = {})       => api.get(url, config).then(r => r.data);
 export const post = (url, data, config = {}) => api.post(url, data, config).then(r => r.data);
 export const put  = (url, data, config = {}) => api.put(url, data, config).then(r => r.data);

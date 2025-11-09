@@ -19,15 +19,23 @@ export default function Apply() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Sending...');
-
     try {
-      await post(`${process.env.REACT_APP_API_URL}/contact/`, formData);
-      setStatus('Your application has been submitted!');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-    } catch (error) {
-      setStatus('Error sending application. Please try again.');
-      console.error(error);
+      const response = await apiRequest("/applications/", {
+        method: "POST",
+        body: JSON.stringify({
+          property: property.id,
+          tenant_name: form.name,
+          tenant_email: form.email,
+          message: form.message,
+        }),
+      });
+      if (response.ok) {
+        setSuccess(true);
+      } else {
+        alert("Failed to submit application.");
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
 

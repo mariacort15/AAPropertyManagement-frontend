@@ -1,12 +1,25 @@
-const BASE_URL = "http://127.0.0.1:8000/api";
+import { BASE_URL } from "./config";
 
 
-async function refreshAccessToken() {
+function getAccessToken() {
+  return localStorage.getItem("access");
+}
+
+function saveAccessToken(token) {
+  localStorage.setItem("access", token);
+}
+
+function clearTokens() {
+  localStorage.removeItem("access");
+  localStorage.removeItem("refresh");
+}
+
+export async function refreshAccessToken() {
   const refresh = localStorage.getItem("refresh");
   if (!refresh) return null;
 
   try {
-    const response = await fetch(`${BASE_URL}/token/refresh/`, {
+    const response = await fetch(`${BASE_URL}token/refresh/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refresh }),
@@ -15,49 +28,40 @@ async function refreshAccessToken() {
     if (!response.ok) throw new Error("Failed to refresh token");
 
     const data = await response.json();
-    localStorage.setItem("access", data.access);
+    saveAccessToken(data.access);
     return data.access;
   } catch (err) {
-    console.error("Token refresh failed:", err);
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
+    console.error("🔒 Token refresh failed:", err);
+    clearTokens();
     return null;
   }
 }
 
 export async function apiRequest(endpoint, options = {}) {
-  const access = localStorage.getItem("access");
+  let access = getAccessToken();
 
-  const defaultHeaders = {
+  const headers = {
     "Content-Type": "application/json",
     ...(access ? { Authorization: `Bearer ${access}` } : {}),
+    ...options.headers,
   };
 
   try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
-      ...options,
-      headers: { ...defaultHeaders, ...options.headers },
-    });
+    let response = await fetch(`${BASE_URL}${endpoint}`, { ...options, headers });
 
-
-    if (response.status === 401 && refreshAccessToken) {
+    if (response.status === 401) {
       const newAccess = await refreshAccessToken();
-      if (newAccess) {
-        const retryResponse = await fetch(`${BASE_URL}${endpoint}`, {
-          ...options,
-          headers: {
-            ...defaultHeaders,
-            Authorization: `Bearer ${newAccess}`,
-            ...options.headers,
-          },
-        });
-        return retryResponse;
-      }
+      if (!newAccess) throw new Error("Session expired, please log in again.");
+
+      headers.Authorization = `Bearer ${newAccess}`;
+      response = await fetch(`${BASE_URL}${endpoint}`, { ...options, headers });
     }
 
-    return response;
+    if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+
+    return await response.json();
   } catch (err) {
-    console.error("API Request error:", err);
+    console.error("API Request failed:", err);
     throw err;
   }
 }

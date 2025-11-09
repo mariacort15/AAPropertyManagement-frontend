@@ -1,4 +1,0 @@
-[
-    {"model":"contacts.contact","pk":1,"fields":{"first_name":"Maria","last_name":"Owner","email":"owner@gmail.com","phone":"+1-555-111-2226"}},
-    {"model":"contacts.owner","pk":1,"fields":{"contact":1}}
-  ]

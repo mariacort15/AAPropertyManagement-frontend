@@ -1,0 +1,56 @@
+.apply-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .apply-container h1 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+  }
+  
+  .apply-container p {
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .apply-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .apply-form input,
+  .apply-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .submit-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .submit-btn:hover {
+    background-color: #b02a37;
+  }
+  
+  .status-message {
+    margin-top: 1.5rem;
+    color: #333;
+    font-weight: 500;
+  }

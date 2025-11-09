@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { post } from '../../lib/api';
-import './Apply.css';
+import './ApplyNowPanel.css';
+import { apiRequest } from "../../api/apiClient";
 
 export default function Apply() {
   const [formData, setFormData] = useState({

@@ -1,0 +1,124 @@
+.property-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #51b5a8;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(223, 88, 88, 0.943);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    min-height: 400px;
+  }
+  
+  .property-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(48, 252, 201, 0.683);
+  }
+  
+  
+  .image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .property-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .property-card:hover .property-image {
+    transform: scale(1.05);
+  }
+  
+
+  .price-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #007bff;
+    color: rgb(194, 47, 47);
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  
+  .property-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    flex-grow: 1;
+  }
+  
+ 
+  .property-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .property-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3f9e2a;
+    margin: 0;
+  }
+  
+  
+  .address {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.4rem 0;
+  }
+  
+  
+  .property-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #733ccb;
+    margin-top: 0.5rem;
+  }
+  
+  .status.available {
+    color: #28a745;
+    font-weight: 600;
+  }
+  
+  .status.occupied {
+    color: #dc3545;
+    font-weight: 600;
+  }
+  
+  
+  .apply-btn {
+    background: #e1e0d3;
+    color: rgb(214, 135, 208);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    align-self: stretch;
+  }
+  
+  .apply-btn:hover {
+    background: #579ae2;
+    transform: scale(1.02);
+  }
+  
+  .apply-btn:disabled {
+    background: #432d2d;
+    cursor: not-allowed;
+  }

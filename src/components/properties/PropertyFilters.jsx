@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { get } from '../..lib/api'; 
 import './PropertyFilters.css';
 
-export default function PropertyFilters({ onChange }) {
+export default function PropertyFilters({ filters, onChange }) {
   const [q, setQ] = useState('');
   const [beds, setBeds] = useState('');
   const [min, setMin] = useState('');

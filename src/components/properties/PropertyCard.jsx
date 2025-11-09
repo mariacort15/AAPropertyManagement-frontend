@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
-import React from "react";
+import React, { useState } from "react";
+import ApplyNowPanel from "./ApplyNowPanel";
 import "./PropertyCard.css";
 
 export default function PropertyCard({ property }) {
+  const [showApply, setShowApply] = useState(false);
+
   return (
     <div className="property-card">
       <img
@@ -17,7 +20,18 @@ export default function PropertyCard({ property }) {
         <p><strong>Status:</strong> {property.status}</p>
         <p><strong>Type:</strong> {property.type}</p>
         <p><strong>Price:</strong> ${property.price || "N/A"}</p>
+        <button 
+        className="apply-btn"
+        onClick={() => setShowApply(true)}
+        disabled={property.staus !== "Available"}
+        >
+          Apply Now!
+        </button>
       </div>
+
+      {showApply && (
+        <ApplyNowPanel property={property} onClose={() => setShowApply(false)} />
+      )}
     </div>
   );
 }
